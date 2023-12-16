@@ -1,4 +1,11 @@
-﻿using System;
+using VumbaSoft.AdventureWorksAbp.Demographics.Localities;
+using VumbaSoft.AdventureWorksAbp.Demographics.DistrictCities;
+using VumbaSoft.AdventureWorksAbp.Demographics.StateProvinces;
+using VumbaSoft.AdventureWorksAbp.Demographics.Regions;
+using VumbaSoft.AdventureWorksAbp.Demographics.Countries;
+using VumbaSoft.AdventureWorksAbp.Demographics.Subcontinents;
+using VumbaSoft.AdventureWorksAbp.Demographics.Continents;
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Uow;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -41,6 +48,13 @@ public class AdventureWorksAbpEntityFrameworkCoreModule : AbpModule
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
+            options.AddRepository<Continent, ContinentRepository>();
+            options.AddRepository<Subcontinent, SubcontinentRepository>();
+            options.AddRepository<Country, CountryRepository>();
+            options.AddRepository<Region, RegionRepository>();
+            options.AddRepository<StateProvince, StateProvinceRepository>();
+            options.AddRepository<DistrictCity, DistrictCityRepository>();
+            options.AddRepository<Locality, LocalityRepository>();
         });
 
         Configure<AbpDbContextOptions>(options =>
